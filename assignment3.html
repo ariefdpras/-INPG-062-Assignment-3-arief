@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    
+    <!-- My CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="judul">Data Covid-19 Global</div>
+    <div id="konten" class="container">
+        <div class="search-box">
+            <div class="search-icon">
+                <i class="bi bi-search"></i>
+            </div>
+            <div class="search-input">
+                <input id="keyword" type="text" class="input" placeholder="Search">
+                <!-- <button id="tombolcari">Get Data</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-box">
+            <h1 class="bi bi-universal-access-circle"></h1>
+            <h3>Active Cases</h3>
+            <h4 id="active-cases">0</h4>
+        </div>
+        <div class="flex-box">
+            <h1 class="bi bi-person-plus"></h1>
+            <h3>New Cases</h3>
+            <h4 id="new-cases">0</h4>
+        </div>
+        <div class="flex-box">
+            <h1 class="bi bi-bandaid"></h1>
+            <h3>Recovery Cases</h3>
+            <h4 id="recovery-cases">0</h4>
+        </div>
+        <div class="flex-box">
+            <h1 class="bi bi-hospital"></h1>
+            <h3>Total Cases</h3>
+            <h4 id="total-cases">0</h4>
+        </div>
+        <div class="flex-box">
+            <h1 class="bi bi-speedometer2"></h1>
+            <h3>Total Deaths</h3>
+            <h4 id="total-deaths">0</h4>
+        </div>
+        <div class="flex-box">
+            <h1 class="bi bi-clipboard2-pulse"></h1>
+            <h3>Total Tests</h3>
+            <h4 id="total-tests">0</h4>
+        </div>
+    </div>
+
+    <script>
+
+        function tampilkandata(search) {
+        const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": 'https://covid-193.p.rapidapi.com/statistics',
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Key": "19764b8c11msha50297aa96aecb0p13297ejsn8df06fd30243",
+		"X-RapidAPI-Host": "covid-193.p.rapidapi.com"
+	}
+};
+$.ajax(settings).done(function (data) {
+	console.log(data);
+    data = data.response[0];
+    $('#active-cases').text(data.cases.active);
+    $('#new-cases').text(data.cases.new);
+    $('#recovery-cases').text(data.cases.recovered);
+    $('#total-cases').text(data.cases.total);
+    $('#total-deaths').text(data.deaths.total);
+    $('#active-cases').text(data.test.total);
+});
+        };
+             
+        
+// $('#tombolcari').on('click', function () {
+//     $("#keyword").val()
+//     tampilkandata();   
+// });
+
+$('#keyword').on('keyup', function (e) {
+    if(e.keyCode == 13){
+        const search = $("#keyword").val();
+        console.log(search)
+    tampilkandata(search);   
+    }   
+});
+
+tampilkandata(country);
+
+    </script>
+    
+</body>
+</html>

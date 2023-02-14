@@ -1,0 +1,100 @@
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+  * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    background-color: #19adb3;
+    min-height: 800px;
+  }
+
+  #judul {
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    padding-top: 2rem;
+    
+  }
+
+  .container {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .flex-container {
+    width: auto;
+    padding-top: 3rem;
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 25%;
+  }
+.flex-box {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(aqua,black);
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 1rem;
+    line-height: 200px;
+    border-radius: 20px;
+    margin: 10px;
+  
+}
+  /* .kolom {
+    width: 30%;
+    text-align: center;
+  } */
+
+  
+
+  .search-box {
+    
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    padding: 8px 16px;
+    border-radius: 40px;
+    
+  }
+
+  .search-icon {
+    padding-right: 0.5rem;
+  }
+
+  .search-box .search-icon {
+font-size: 1.20rem;
+color: #25a0c2;
+  }
+
+  .search-box .search-input {
+    transition: .5s;
+    width: 0px;
+    overflow: hidden;
+  }
+
+  .search-input .input {
+    border: none;
+    outline: none;
+    background-color: unset;
+    padding: 8px;
+    font-weight: bold;
+  }
+
+  .search-box:hover .search-input {
+    width: 200px;
+    margin-left: 8px;
+  }
